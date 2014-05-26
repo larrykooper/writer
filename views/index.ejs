@@ -1,3 +1,10 @@
 <html>
-HELLO FUCKING WORLD
+    <% posts.forEach(function(post) { %>
+        <div class='entry'>
+            <h3><%= post.title %></h3>
+            <div class='posting'><%- post.body %></div>
+
+        </div>
+    <% }) %>
+
 </html>
