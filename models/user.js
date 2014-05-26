@@ -1,9 +1,11 @@
 // models/user.js
 
-var db = require('../data_definitions');
+//var db = require('../data_definitions');
+var app = require('../app');
+var User = app.get('dataDefinitions').User;
 
 exports.create = function(userData) {
-    var user = db.User.build({
+    var user = User.build({
          username: userData.username
     });
 }
