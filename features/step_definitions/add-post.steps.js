@@ -16,6 +16,8 @@ module.exports = function() {
         done();
     });
 
+// In this next step definition, I passed the callback to Post.create
+// in order to be sure that the create is done before going to the next step.
     this.Given(/^the User has posted the posting "([^"]*)"$/, function (arg1, callback) {
         myPosting = Post.create({
             title: "Test Post Title",
