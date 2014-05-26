@@ -4,7 +4,6 @@ if (!global.hasOwnProperty('db')) {
     var match;
 
     if (process.env.NODE_ENV == 'test') {
-        console.log('IT IS TEST');
 
         match = process.env.TEST_DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
 
