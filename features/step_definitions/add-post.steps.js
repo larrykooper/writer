@@ -1,7 +1,8 @@
 'use strict';
 
-var user = require(process.cwd() + '/models/user');
-var post = require(process.cwd() + '/models/post');
+var User = require(process.cwd() + '/models/user');
+var Post = require(process.cwd() + '/models/post');
+var assert = require('assert');
 
 module.exports = function() {
 
@@ -11,22 +12,26 @@ module.exports = function() {
     var myPosting;
     
     this.Given(/^there is a User$/, function (done) {
-        myUser = user.create({username: 'john'});
+        myUser = User.create({username: 'john'});
         done();
     });
 
-    this.Given(/^the User has posted the posting "([^"]*)"$/, function (arg1, done) {
-        myPosting = post.create({
+    this.Given(/^the User has posted the posting "([^"]*)"$/, function (arg1, callback) {
+        myPosting = Post.create({
             title: "Test Post Title",
             body: arg1
-        })
-        done();
+        }, callback);
     });
 
     this.When(/^I visit the homepage$/, function (callback) {
-        // express the regexp above with the code you wish you had
         this.visit("http://localhost:3000/", callback);
+    });
 
+    this.Then(/^I should see "([^"]*)"$/, function (text, callback) {
+        var posting = this.browser.text('.posting');
+        console.log(posting);
+        assert.equal(posting, text, "Expected posting: " + posting + " to equal text: " + text);
+        callback();
     });
 
 }
