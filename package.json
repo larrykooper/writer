@@ -1,0 +1,14 @@
+{
+  "name": "writer",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.28"
+  },
+  "private": true,
+  "dependencies" : {
+    "sequelize": "^1.7.5"
+  }, 
+  "devDependencies": {
+    "cucumber": "^0.4.0"
+  }
+}
