@@ -2,7 +2,7 @@
 
 var User = require(process.cwd() + '/models/user');
 var Post = require(process.cwd() + '/models/post');
-var assert = require('assert');
+var should = require('chai').should()
 
 module.exports = function() {
 
@@ -31,8 +31,8 @@ module.exports = function() {
 
     this.Then(/^I should see "([^"]*)"$/, function (text, callback) {
         var posting = this.browser.text('.posting');
-        console.log(posting);
-        assert.equal(posting, text, "Expected posting: " + posting + " to equal text: " + text);
+        //console.log(posting);
+        posting.should.equal(text);
         callback();
     });
 
