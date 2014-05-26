@@ -1,4 +1,8 @@
 var zombie = require('zombie');
+// clear out test database
+var Post = require(process.cwd() + '/models/post');
+Post.deleteAll();
+
 var World = function World(callback) {
   this.browser = new zombie(); // this.browser will be available in step definitions
 
