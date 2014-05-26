@@ -11,24 +11,30 @@ if (!global.hasOwnProperty('db')) {
             logging:  console.log
         });
 
+    if (global.env == 'test') {
 
-        
+        match = process.env.TEST_DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
 
-    global.db = {
-        Sequelize: Sequelize,
-        sequelize: sequelize,
-        User:      sequelize.import(__dirname + '/user')
-    
-       // add your other models here
+        sequelize_test = new Sequelize(match[5], match[1], match[2], {
+            dialect:  'postgres',
+            protocol: 'postgres',
+            port:     match[4],
+            host:     match[3],
+            logging:  console.log
+        });
+
+        global.db = {
+            Sequelize: Sequelize,
+            sequelize: sequelize_test,
+            User:      sequelize.import(__dirname + '/user')
+        }
+    } else {
+        global.db = {
+            Sequelize: Sequelize,
+            sequelize: sequelize,
+            User:      sequelize.import(__dirname + '/user')
+        }
     }
 
-  /*
-    Associations can be defined here. E.g. like this:
-    global.db.User.hasMany(global.db.SomethingElse)
-  */
-
-  //for more on assoc see http://sequelizejs.com/articles/express
-
 }
-
 module.exports = global.db
