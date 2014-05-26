@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+</head>
+<body>
+
 <h1>Writer Admin</h1>
+<h2>Sign In</h2>
+    <form action='/login' method='post'>
+        <p>
+        <div>
+            <label>Email</label>
+        </div>
+            <input class="email" type='text' name='user[name]' size="40" />
+        </p>
+        <label>Password</label>
+        <p>
+            <input class="password" type='password' name='user[pass]' size="40" />
+        </p>
+        <p>
+            <input type='submit' value='Login' />
+        </p>
+    </form>
+</body>
+</html>
