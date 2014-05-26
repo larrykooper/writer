@@ -17,6 +17,7 @@
     "sequelize": "^1.7.5"
   },
   "devDependencies": {
+    "chai": "*",
     "cucumber": "^0.4.0",
     "zombie": "^2.0.0-alpha31"
   }
