@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 // Now we require the route logic
 var routes = require('./routes/index');
 var adminRoutes = require('./routes/admin');
+var loginRoutes = require('./routes/login');
 
 var app = express();
 
@@ -18,6 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes are here
 app.get('/', routes.index);
 app.get('/admin', adminRoutes.index);
+app.get('/admin/posts', adminRoutes.posts);
+app.post('/login', loginRoutes.submit);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

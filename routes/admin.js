@@ -7,3 +7,6 @@ exports.index = function(req, res){
   
 }
 
+exports.posts = function(req,res) {
+    res.render('admin/posts');
+}
