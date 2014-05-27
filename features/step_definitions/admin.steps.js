@@ -1,4 +1,4 @@
-//var assert = require('assert');
+var User = require(process.cwd() + '/models/user');
 var should = require('chai').should()
 
 module.exports = function() {
@@ -19,6 +19,28 @@ module.exports = function() {
         var labels = this.browser.text('label');
         labels.should.contain('Password');
         callback();
+    });
+
+    this.Given(/^a user with username "([^"]*)" and password "([^"]*)"$/, function (user, password, callback) {
+        var myUser;
+        myUser = User.create({
+            username: user,
+            password: password
+        });
+        callback();
+    });
+
+    this.When(/^I login as "([^"]*)" with password "([^"]*)"$/, function (user, password, callback) {
+        // express the regexp above with the code you wish you had
+        var context = this;
+        this.visit("http://localhost:3000/admin", function(){
+            context.browser.fill(".email", user).fill(".password", password);
+            context.browser.pressButton("Login", function() {
+                // All signed up, now what?
+                callback();
+            });
+        });
+
     });
 
 
