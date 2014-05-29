@@ -1,7 +1,6 @@
 'use strict';
 
-var User = require(process.cwd() + '/models/user');
-var Post = require(process.cwd() + '/models/post');
+var db = require('../../models');
 var should = require('chai').should()
 
 module.exports = function() {
@@ -12,14 +11,14 @@ module.exports = function() {
     var myPosting;
     
     this.Given(/^there is a User$/, function (done) {
-        myUser = User.create({username: 'john'});
+        myUser = db.User.create({username: 'john'});
         done();
     });
 
 // In this next step definition, I passed the callback to Post.create
 // in order to be sure that the create is done before going to the next step.
     this.Given(/^the User has posted the posting "([^"]*)"$/, function (arg1, callback) {
-        myPosting = Post.create({
+        myPosting = db.Post.create({
             title: "Test Post Title",
             body: arg1
         }, callback);
