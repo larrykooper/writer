@@ -1,4 +1,4 @@
-var db = require('../data_definitions');
+var db = require('../models');
 
 exports.index = function(req, res){
   db.Post.findAll().success(function(posts) {
