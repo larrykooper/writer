@@ -1,4 +1,4 @@
-var User = require(process.cwd() + '/models/user');
+var db = require('../../models');
 var should = require('chai').should()
 
 module.exports = function() {
@@ -23,7 +23,7 @@ module.exports = function() {
 
     this.Given(/^a user with username "([^"]*)" and password "([^"]*)"$/, function (user, password, callback) {
         var myUser;
-        myUser = User.create({
+        myUser = db.User.create({
             username: user,
             password: password
         });
@@ -31,7 +31,6 @@ module.exports = function() {
     });
 
     this.When(/^I login as "([^"]*)" with password "([^"]*)"$/, function (user, password, callback) {
-        // express the regexp above with the code you wish you had
         var context = this;
         this.visit("http://localhost:3000/admin", function(){
             context.browser.fill(".email", user).fill(".password", password);
@@ -45,6 +44,17 @@ module.exports = function() {
     this.Then(/^I should be on the admin posts page$/, function (callback) {
         var location = this.browser.location.pathname;
         location.should.equal('/admin/posts');
+        callback();
+    });
+
+    this.Given(/^there is no user "([^"]*)"$/, function (arg1, callback) {
+        // Does not need any code, since database is cleared before each scenario
+        callback();
+    });
+
+    this.Then(/^I should be on the admin page$/, function (callback) {
+        var location = this.browser.location.pathname;
+        location.should.equal('/admin');
         callback();
     });
 
