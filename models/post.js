@@ -1,22 +1,30 @@
-// models/post.js
+module.exports = function(sequelize, DataTypes) {
+    var Post = sequelize.define('post', {
+        title: DataTypes.TEXT,
+        body: DataTypes.TEXT,
+        status: DataTypes.STRING,
+        user_id: DataTypes.INTEGER
+    }, {
+        classMethods: {
+            create: function(postData, callback) {
+                var post = Post.build({
+                     title: postData.title,
+                     body: postData.body
+                });
 
-var app = require('../app');
-var Post = app.get('dataDefinitions').Post
+                post.save(callback)
+                    .success(function(){
+                        callback();
+                    }).error(function(error){
+                        callback('oops, do some error handling' + error);
+                    })
+                },
 
-exports.create = function(postData, callback) {
-    var post = Post.build({
-         title: postData.title,
-         body: postData.body
-    });
+            deleteAll: function() {
+                Post.destroy();
+            }
+        } // classMethods
+    }); // define
 
-    post.save(callback)
-        .success(function(){
-            callback();
-        }).error(function(error){
-            callback('oops, do some error handling' + error);
-        })
-};
-
-exports.deleteAll = function() {
-    Post.destroy();
-};
+  return Post;
+}
