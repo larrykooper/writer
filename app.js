@@ -1,6 +1,10 @@
 var express = require('express');
 var path = require('path');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var messages = require('./lib/messages');
 
 // Now we require the route logic
 var routes = require('./routes/index');
@@ -12,9 +16,15 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('dataDefinitions', require('./data_definitions'));
+app.set('models', require('./models'));
 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(session({ secret: 'fjfwienvnwinviw', key: 'sid'  }))
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(messages);
 
 // Routes are here
 app.get('/', routes.index);
