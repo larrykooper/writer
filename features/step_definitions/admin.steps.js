@@ -36,11 +36,16 @@ module.exports = function() {
         this.visit("http://localhost:3000/admin", function(){
             context.browser.fill(".email", user).fill(".password", password);
             context.browser.pressButton("Login", function() {
-                // All signed up, now what?
+                // All signed in, now what?
                 callback();
             });
         });
+    });
 
+    this.Then(/^I should be on the admin posts page$/, function (callback) {
+        var location = this.browser.location.pathname;
+        location.should.equal('/admin/posts');
+        callback();
     });
 
 
