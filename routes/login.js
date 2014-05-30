@@ -9,7 +9,7 @@ exports.submit = function(req, res, next) {
         password: req.body.password
     });
 
-    user.authenticate(user.username, user.password, session, function(err, session, user){
+    user.authenticate(user.username, user.password, function(err, user){
         // Returns user here if user is authenticated
         // Delegate errors
         if (err) {
@@ -20,7 +20,7 @@ exports.submit = function(req, res, next) {
             session.uid = user.id;
             res.redirect('admin/posts');
         } else {
-            res.error("Your username or password is incorrect", session);
+            res.error("Your username or password is incorrect");
             res.redirect('/admin');
         }
     });
