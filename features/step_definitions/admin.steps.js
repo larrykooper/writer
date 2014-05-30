@@ -26,8 +26,7 @@ module.exports = function() {
         myUser = db.User.create({
             username: user,
             password: password
-        });
-        callback();
+        }, callback);
     });
 
     this.When(/^I login as "([^"]*)" with password "([^"]*)"$/, function (user, password, callback) {
