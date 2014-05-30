@@ -6,12 +6,18 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING
     }, {
         classMethods: {
-            create: function(userData) {
+            create: function(userData, callback) {
                 var user = User.build({
                     username: userData.username
                 });
-               // did not save yet
-            },
+               // save
+               user.save(callback)
+                   .success(function(){
+                       callback();
+                   }).error(function(error){
+                       callback('ERROR 613: ' + error);
+                   })
+            }, // end of create
 
             deleteAll: function() {
                 User.destroy();
@@ -25,8 +31,8 @@ module.exports = function(sequelize, DataTypes) {
                     }
                     return fn(null, user);
                 });
-            }
-        },
+            } // end of getByName
+        }, // end of classMethods
         instanceMethods: {
             authenticate: function(username, password, callback) {
                 // Look up user by name
@@ -42,6 +48,6 @@ module.exports = function(sequelize, DataTypes) {
                 });
             }
         }   // instanceMethods
-    });
+    });   // define
     return User;
 } // function(sequelize
