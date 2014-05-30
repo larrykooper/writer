@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/admin.css' />
+</head>
+<body>
+    <div class="registration">
+        <h1><%= title %></h1>
+        <p>Fill in the form below to register!</p>
+    
+        <% include messages %>
+        <form action='/admin/register' method='post'>
+            <p>
+                <input type='text' name='user[username]' size="30" placeholder='Username' />
+            </p>
+            <p>
+                <input type='password' name='user[password]' size="20" placeholder='Password' />
+            </p>
+            <p>
+                <input type='submit' value='Sign Up' />
+            </p>        
+        </form>
+    </div>
+</body>
+</html>
