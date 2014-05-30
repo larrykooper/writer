@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                     .success(function(){
                         callback();
                     }).error(function(error){
-                        callback('oops, do some error handling' + error);
+                        callback('ERROR 607: ' + error);
                     })
                 },
 
