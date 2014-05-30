@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt');
+
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define('user', {
         username: DataTypes.STRING,
@@ -8,15 +10,20 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             create: function(userData, callback) {
                 var user = User.build({
-                    username: userData.username
+                    username: userData.username,
+                    password: userData.password
                 });
-               // save
-               user.save(callback)
-                   .success(function(){
-                       callback();
-                   }).error(function(error){
-                       callback('ERROR 613: ' + error);
-                   })
+                // Hash the password
+                user.hashPassword(function(err) {
+                    if (err) return callback(err);
+                    // save the user record
+                    user.save(callback)
+                        .success(function(){
+                            callback(null, user);
+                        }).error(function(error){
+                            callback('ERROR 613: Creating a user: ' + error);
+                        })
+                }); // hashPassword
             }, // end of create
 
             deleteAll: function() {
@@ -44,6 +51,22 @@ module.exports = function(sequelize, DataTypes) {
                         if (err) return callback(err);
                         if (hash == user.password) return fn(null, user);  // match found
                         callback(); // invalid password
+                    });
+                });
+            },
+
+            hashPassword: function(fn) {
+                var user = this;
+                // Generate a 12-character salt
+                bcrypt.genSalt(12, function(err,salt) {
+                    if (err) return fn(err);
+                    // Set salt to save it
+                    user.salt = salt;
+                    bcrypt.hash(user.password, salt, function(err, hash) {
+                        if (err) return fn(err);
+                        // Replace plain text password with hash
+                        user.pass = hash;
+                        fn();
                     });
                 });
             }
