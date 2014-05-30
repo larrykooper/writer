@@ -17,7 +17,7 @@ exports.submit = function(req, res, next) {
         };
         if (user) {
             // Store user ID in session
-            session.uid = user.id;
+            session.username = user.username;
             res.redirect('admin/posts');
         } else {
             res.error("Your username or password is incorrect");
