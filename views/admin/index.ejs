@@ -6,21 +6,25 @@
 <body>
 
 <h1>Writer Admin</h1>
-<h2>Sign In</h2>
-    <form action='/login' method='post'>
-        <p>
-        <div>
-            <label>Email or Username</label>
-        </div>
-            <input class="email" type='text' name='username' size="40" />
-        </p>
-        <label>Password</label>
-        <p>
-            <input class="password" type='password' name='password' size="40" />
-        </p>
-        <p>
-            <input type='submit' value='Login' />
-        </p>
-    </form>
+
+<div class="shell">
+    <h2><a href='/admin/register'>Register</a></h2>
+    <h2>Sign In</h2>
+        <form action='/login' method='post'>
+            <p>
+            <div>
+                <label>Email or Username</label>
+            </div>
+                <input class="email" type='text' name='username' size="40" />
+            </p>
+            <label>Password</label>
+            <p>
+                <input class="password" type='password' name='password' size="40" />
+            </p>
+            <p>
+                <input type='submit' value='Login' />
+            </p>
+        </form>
+</div>
 </body>
 </html>
