@@ -47,9 +47,11 @@ module.exports = function(sequelize, DataTypes) {
                     if (err) return callback(err); // the callback with error
                     if (!user) return callback(null); // User does not exist; invoke the callback
                     // Hash the given password
-                    bcrypt.hash(user.password, user.salt, function(err, hash) {
+                    bcrypt.hash(password, user.salt, function(err, hash) {
                         if (err) return callback(err);
-                        if (hash == user.password) return fn(null, user);  // match found
+                        if (hash == user.password) {
+                            return callback(null, user);  // match found
+                        }
                         callback(); // invalid password
                     });
                 });
@@ -65,7 +67,7 @@ module.exports = function(sequelize, DataTypes) {
                     bcrypt.hash(user.password, salt, function(err, hash) {
                         if (err) return fn(err);
                         // Replace plain text password with hash
-                        user.pass = hash;
+                        user.password = hash;
                         fn();
                     });
                 });
