@@ -11,7 +11,10 @@ module.exports = function() {
     var myPosting;
     
     this.Given(/^there is a User$/, function (done) {
-        myUser = db.User.create({username: 'john'});
+        myUser = db.User.create({
+            username: 'john',
+            password: 'armadillo'
+            });
         done();
     });
 
