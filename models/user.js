@@ -28,11 +28,11 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         instanceMethods: {
-            authenticate: function(username, password, callback) {
+            authenticate: function(username, password, session, callback) {
                 // Look up user by name
                 User.getByName(username, function(err, user) {
                     if (err) return callback(err); // the callback with error
-                    if (!user) return callback(err); // User does not exist; invoke the callback
+                    if (!user) return callback(null, session); // User does not exist; invoke the callback
                     // Hash the given password
                     bcrypt.hash(user.password, user.salt, function(err, hash) {
                         if (err) return callback(err);
