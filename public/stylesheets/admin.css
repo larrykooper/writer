@@ -1,3 +1,11 @@
+.shell {
+    margin-left: 200px;
+}
+
+.registration {
+    margin-left: 250px;
+}
+
 input {
     font-size: 16px;
 }
