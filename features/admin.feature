@@ -7,6 +7,7 @@ Feature: The Admin
     Given a user with username "john" and password "secret"
     When I login as "john" with password "secret"
     Then I should be on the admin posts page
+    And I should see a button labeled "New post"
 
   Scenario: If not registered, you cannot log in.
     Given there is no user "josh"

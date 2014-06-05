@@ -57,5 +57,10 @@ module.exports = function() {
         callback();
     });
 
+    this.Then(/^I should see a button labeled "([^"]*)"$/, function (buttonLabel, callback) {
+      var buttonText = this.browser.text("button");
+      buttonText.should.equal(buttonLabel);
+      callback();
+    });
 
 }
