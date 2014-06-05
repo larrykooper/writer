@@ -12,5 +12,5 @@ Feature: The Admin
     Given there is no user "josh"
     When I login as "josh" with password "invalid"
     Then I should be on the admin page
-    And I should see "Your username or password is incorrect"
+    And I should see as error "Your username or password is incorrect"
 

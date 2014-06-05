@@ -31,10 +31,9 @@ module.exports = function() {
         this.visit("http://localhost:3000/", callback);
     });
 
-    this.Then(/^I should see "([^"]*)"$/, function (text, callback) {
-        var posting = this.browser.text('.posting');
-        //console.log(posting);
-        posting.should.equal(text);
+    this.Then(/^I should see as ([^ ]*) "([^"]*)"$/, function (selector, text, callback) {
+        var docText = this.browser.text('.'+ selector);
+        docText.should.equal(text);
         callback();
     });
 
