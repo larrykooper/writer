@@ -14,7 +14,7 @@ if (!global.hasOwnProperty('db')) {
             host:     match[3],
             logging:  console.log
         });
-        console.log("Welcome to the test system!");
+        console.log("Welcome to the test environment!");
         global.db = {
             Sequelize: Sequelize,
             sequelize: sequelize_test
@@ -30,7 +30,7 @@ if (!global.hasOwnProperty('db')) {
             logging:  console.log
         });
 
-        console.log("Welcome to the dev system!");
+        console.log("Welcome to the dev environment!");
         global.db = {
             Sequelize: Sequelize,
             sequelize: sequelize
