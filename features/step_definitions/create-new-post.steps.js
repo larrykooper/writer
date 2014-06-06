@@ -9,26 +9,35 @@ module.exports = function() {
       callback();
     });    
     
-    this.Given(/^I am on the admin posts page$/, function (callback) {
-      this.visit("http://localhost:3000/admin/posts", callback);
-      callback();
-    });
+    // is it possible that if you are already on the page you cannot visit it?
     
+    var wrapper = this;
     this.Given(/^I press the button with id "([^"]*)"$/, function (buttonId, callback) {
+        console.log("MESSAGE 112");
+        var context = this;
         this.visit("http://localhost:3000/admin/posts", function(){
-            console.log("BROWSER");
+            console.log("MESSAGE 161");
             console.log(this.browser.html());
             var selector = '#' + buttonId; 
-            this.browser.pressButton(selector, function(){
-                callback();
+            context.browser.pressButton(selector, function(){
+                //context.browser.dump();
+                wrapper.Then(/^I should be on the editor page$/, function (callback) {
+                    console.log("MESSAGE 151");
+                    var location = this.browser.location.pathname;
+                    location.should.equal('/admin/mmixerpx');
+                    callback();
+                });
             });
         });
     });
     
+    
     this.Then(/^I should be on the editor page$/, function (callback) {
+        console.log("MESSAGE 301");
         var location = this.browser.location.pathname;
-        location.should.equal('/admin/editor');
+        location.should.equal('/admin/mmixerpx');
         callback();
     });
+
 
 }
