@@ -4,6 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var userMiddleware = require('./lib/middleware/user');
 var messages = require('./lib/messages');
 
 // Now we require the route logic
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({ secret: 'fjfwienvnwinviw', key: 'sid'  }))
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(userMiddleware);
 app.use(messages);
 
 // Routes are here
