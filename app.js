@@ -33,6 +33,7 @@ app.use(messages);
 app.get('/', routes.index);
 app.get('/admin', adminRoutes.index);
 app.get('/admin/posts', adminRoutes.posts);
+app.get('/admin/editor', adminRoutes.editor);
 app.post('/login', loginRoutes.submit);
 app.get('/admin/register', register.form);
 app.post('/admin/register', register.submit);
