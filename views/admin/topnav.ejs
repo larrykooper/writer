@@ -1,0 +1,10 @@
+<% if (locals.user) { %>
+    <div id='topnav'>
+        <div>Welcome, <%= locals.user.username  %></div>
+        <a href='/logout'>Sign Out</a>
+    </div>
+<% } else { %>
+    <div id='topnav'>
+        You are not logged in.
+    </div>
+<% } %>
