@@ -4,8 +4,8 @@ Feature: The Admin
     Then I should see the login form
 
   Scenario: Login
-    Given a user with username "john" and password "secret"
-    When I login as "john" with password "secret"
+    Given a user with username "mary" and password "secret"
+    When I login as "mary" with password "secret"
     Then I should be on the admin posts page
     And I should see a button labeled "New post"
 
