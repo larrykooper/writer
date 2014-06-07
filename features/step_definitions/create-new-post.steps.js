@@ -4,7 +4,7 @@ var createNewPostSteps = function() {
 
     this.World = require("../support/world.js").World; // overwrite default World constructor
 
-   this.Given(/^I am not signed in$/, function(callback) {
+    this.Given(/^I am not signed in$/, function(callback) {
         this.helpers.visit('admin', callback);
     });
     this.Given(/^I sign in$/, function(callback) {
