@@ -9,7 +9,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-     "bcrypt": "*",
+    "bcrypt": "*",
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "chai": "*",
     "cucumber": "^0.4.0",
+    "dalekjs": "0.0.8",
     "zombie": "^2.0.0-alpha31"
   }
 }
