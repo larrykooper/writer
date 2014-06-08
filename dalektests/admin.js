@@ -1,6 +1,8 @@
 module.exports = {
-    // Login - should see admin posts page 
+    // Login - should see admin posts page
+
     'adminTest': function(test) {
+
         test.open('http://localhost:3000/admin')
             .assert.text('h1', 'Writer Admin', 'Admin header is OK')
             .type('#email', 'mary')
@@ -15,7 +17,6 @@ module.exports = {
     'notRegTest': function(test) {
 
         test.open('http://localhost:3000/admin')
-
             .assert.exists('a[href="/logout"]', 'Logout link exists')
             .click('a[href="/logout"]')
             .type('#email', 'josh')
