@@ -6,9 +6,23 @@ module.exports = {
             .type('#email', 'mary')
             .type('#password', 'secret')
             .submit()
-            .screenshot('after-submit.png')
-            .assert.text('#welcome', 'Welcome to the blog posts admin!')
+            .assert.text('#welcome', 'Welcome to the blog posts admin!', 'I am on the post page')
+            .done();
+    },
+
+    // If not registered, you cannot log in
+    
+    'notRegTest': function(test) {
+
+        test.open('http://localhost:3000/admin')
+
+            .assert.exists('a[href="/logout"]', 'Logout link exists')
+            .click('a[href="/logout"]')
+            .type('#email', 'josh')
+            .type('#password', 'invalid')
+            .submit()
+            .screenshot('josh.png')
+            .assert.text('.error', 'Your username or password is incorrect', 'Error text is OK')
             .done();
     }
-    
 }
