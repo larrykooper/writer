@@ -1,7 +1,9 @@
 <% if (locals.user) { %>
     <div id='topnav'>
-        <div>Welcome, <%= locals.user.username  %></div>
-        <a href='/logout'>Sign Out</a>
+        <div>
+            Welcome, <%= locals.user.username  %>
+            <a href='/logout'>Sign Out</a>
+        </div>
     </div>
 <% } else { %>
     <div id='topnav'>
