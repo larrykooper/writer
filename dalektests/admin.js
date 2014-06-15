@@ -22,7 +22,7 @@ module.exports = {
             .type('#email', 'josh')
             .type('#password', 'invalid')
             .submit()
-            .screenshot('josh.png')
+            .screenshot('dalektests/screenshots/josh.png')
             .assert.text('.error', 'Your username or password is incorrect', 'Error text is OK')
             .done();
     },
