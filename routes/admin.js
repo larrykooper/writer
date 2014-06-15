@@ -11,3 +11,7 @@ exports.posts = function(req, res) {
 exports.editor = function(req, res) {
     res.render('admin/editor');
 }
+
+exports.register = function(req, res) {
+    res.render('admin/register', {title: 'Register'});
+}

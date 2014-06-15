@@ -1,9 +1,5 @@
 var db = require('../models');
 
-exports.form = function(req, res) {
-    res.render('admin/register', {title: 'Register'});
-}
-
 exports.submit = function(req, res, next) {
     var data = req.body.user; 
     db.User.getByName(data.name, function(err,user){
