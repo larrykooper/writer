@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var userMiddleware = require('./lib/middleware/user');
 var messages = require('./lib/messages');
+var moment = require('moment');
 
 // Now we require the route logic
 var slashRoute = require('./routes/index');
@@ -27,6 +28,10 @@ app.use(session({ secret: 'fjfwienvnwinviw', key: 'sid'  }))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(userMiddleware);
 app.use(messages);
+
+app.locals.date = function(date) {
+  return moment(date).format('MMM DD YYYY');
+}
 
 // Routes are here
 app.get('/', slashRoute.index);
