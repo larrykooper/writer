@@ -12,6 +12,7 @@ var moment = require('moment');
 var slashRoute = require('./routes/index');
 var loginRoutes = require('./routes/login');
 var register = require('./routes/register');
+var adminRoutes = require('./routes/admin');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.get('/', slashRoute.index);
 app.post('/login', loginRoutes.submit);
 app.get('/logout', loginRoutes.logout);
 app.post('/admin/register', register.submit);
+app.post('/admin/post', adminRoutes.create);
 
 // Routes with only a controller
 
