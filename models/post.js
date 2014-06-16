@@ -7,9 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         classMethods: {
             create: function(postData, callback) {
+                var saveBody = postData.body.replace(/(?:\r\n|\r|\n)/g, '<br />');
                 var post = Post.build({
                      title: postData.title,
-                     body: postData.body
+                     body: saveBody
                 });
 
                 post.save(callback)
