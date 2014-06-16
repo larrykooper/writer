@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('models', require('./models'));
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
@@ -40,6 +40,7 @@ app.post('/login', loginRoutes.submit);
 app.get('/logout', loginRoutes.logout);
 app.post('/admin/register', register.submit);
 app.post('/admin/post', adminRoutes.create);
+app.delete('/admin/posts/:id', adminRoutes.deletePost);
 
 // Routes with only a controller
 
@@ -87,6 +88,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
+        console.log(err.message);
         res.render('error', {
             message: err.message,
             error: err
