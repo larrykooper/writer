@@ -5,7 +5,12 @@ $(document).ready(function() {
     })
 
     $("a[kind='delete']").on("click", function() {
-        alert("Are you sure you want to delete the post?");
+        var response=confirm("Are you sure you want to delete this post?");
+        if (response) {
+            console.log("You pressed OK");
+        } else {
+            console.log("You pressed cancel");
+        }
     })
 
     $("a[kind='delete']").hover(
