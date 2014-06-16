@@ -3,17 +3,23 @@
 <head>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src='/js/admin.js'></script>
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
 </head>
 <body>
 <% include topnav %>
-<div id="welcome">Welcome to the blog posts admin!</div>
+<div id="welcome">Blog posts admin</div>
 
 <button id="newPost">New post</button>
-<table>
+<table class="blog-post-table">
 <% posts.forEach(function(post) { %>
     <tr>
-        <td>
-    <%= post.title %>
+        <td class="blog-post">
+            <div>
+                <%= post.title %>
+            </div>
+            <div>
+                Edit | Delete
+            </div>
         </td>
     </tr>
 <% }) %>
