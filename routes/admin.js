@@ -44,3 +44,7 @@ exports.create = function(req, res) {
         }
     });
 }
+
+exports.deletePost = function(req, res) {
+    console.log("YO HO HO AND A DELETE POST");
+}
