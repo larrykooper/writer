@@ -6,6 +6,10 @@
     border-top: 1px solid #ddd;
 }
 
+.entry-main {
+    width: 580px;
+}
+
 .entry-title {
     text-transform: uppercase;
 }

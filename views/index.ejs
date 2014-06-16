@@ -10,10 +10,17 @@
 <div id="contents">
     <% posts.forEach(function(post) { %>
         <div class='entry'>
-            <%= locals.date(post.createdAt) %>
-            <h2 class="entry-title"><%= post.title %></h3>
-            <div class='posting'><%- post.body %></div>
-
+            <div class="entry-meta">
+                 <%= locals.date(post.createdAt) %>
+            </div>
+            <div class="entry-main">
+                <h2 class="entry-title">
+                    <%= post.title %>
+                </h2>
+                <div class="posting">
+                    <%- post.body %>
+                </div>
+            </div>
         </div>
     <% }) %>
 </div>
