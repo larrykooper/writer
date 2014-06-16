@@ -1,10 +1,20 @@
 <html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/blog.css' />
+</head>
+<header>
+    <h1 id="blog-title">
+    Larry Kooper
+    </h1>
+</header>
+<div id="contents">
     <% posts.forEach(function(post) { %>
         <div class='entry'>
-            <h3><%= post.title %></h3>
+            <%= post.createdAt %>
+            <h2 class="entry-title"><%= post.title %></h3>
             <div class='posting'><%- post.body %></div>
 
         </div>
     <% }) %>
-
+</div>
 </html>
