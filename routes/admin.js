@@ -8,7 +8,11 @@ exports.index = function(req, res){
 
 exports.posts = function(req, res) {
     if (res.locals.user) {
-        res.render('admin/posts');
+        db.Post.findAll({order: '"createdAt" DESC'}).success(function(posts) {
+            res.render('admin/posts', {
+                posts: posts
+            });
+        })
     } else {
         res.redirect('/admin');
     }

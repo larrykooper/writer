@@ -9,5 +9,8 @@
 <div id="welcome">Welcome to the blog posts admin!</div>
 
 <button id="newPost">New post</button>
+<% posts.forEach(function(post) { %>
+    <%= post.title %>
+<% }) %>
 </body>
 </html>
