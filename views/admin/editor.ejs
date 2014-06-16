@@ -6,9 +6,10 @@
 </head>
 <% include topnav %>
 <form action='admin/post' method='post'>
-    <div class="title">
+    <span class="title">
         <input id="titleBox" type='text' name='post[title]' size="60" placeholder="Post title" />
-    </div>
+    </span>
+    <input id="publish" type='submit' value='Publish' />
     <div class="postBody">
         <textarea id="postingBox" name='post[body]'></textarea>
     </div>
