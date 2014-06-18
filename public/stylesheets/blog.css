@@ -4,12 +4,38 @@
 
 .entry {
     border-top: 1px solid #ddd;
+    clear: both;
+}
+
+.entry:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
 }
 
 .entry-main {
+    float: left;
+    padding: 29px 5px 15px 15px;
     width: 580px;
 }
 
 .entry-title {
+    font-family: 'Oswald', Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    margin: 5px 0px 15px 0px;
     text-transform: uppercase;
+}
+
+.entry-meta {
+    float: left;
+    font-family: 'Oswald', Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    margin: 35px 0 0 -199px;
+    width: 190px;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
