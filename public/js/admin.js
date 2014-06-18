@@ -2,14 +2,13 @@ var myNamespace = (function () {
 
     var doDeleteCall;
 
-    doDeleteCall = function(foo) {
-        // THE NUMBER 7 IS JUST A PLACEHOLDER. TODO: UPDATE THIS
+    doDeleteCall = function(postNumber) {
         $.ajax({
             type: "DELETE",
-            url: "/admin/posts/7"
+            url: "/admin/posts/" + postNumber
         })
         .done(function(msg) {
-            alert("Data has been deleted!" + msg);
+            location.reload();
         });
     };
 
@@ -20,7 +19,7 @@ $(document).ready(function() {
     })
 
     $("a[kind='delete']").on("click", function() {
-        var postNumber = 7; // THE 7 IS JUST A PLACEHOLDER. TODO: UPDATE THIS
+        var postNumber = $(this).data("id")
         var response=confirm("Are you sure you want to delete this post?");
         if (response) {
             console.log("You pressed OK");
