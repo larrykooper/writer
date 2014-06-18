@@ -3,10 +3,10 @@ var myNamespace = (function () {
     var doDeleteCall;
 
     doDeleteCall = function(foo) {
-        // THE NUMBER 5 IS JUST A PLACEHOLDER. TODO: UPDATE THIS
+        // THE NUMBER 7 IS JUST A PLACEHOLDER. TODO: UPDATE THIS
         $.ajax({
             type: "DELETE",
-            url: "/admin/posts/5.json"
+            url: "/admin/posts/7"
         })
         .done(function(msg) {
             alert("Data has been deleted!" + msg);

@@ -23,7 +23,15 @@ module.exports = function(sequelize, DataTypes) {
 
             deleteAll: function() {
                 Post.destroy();
-            }
+            },
+            deleteOne: function(postID, callback) {
+                Post.find(postID).success(function(post){
+                    post.destroy().success(function(){
+                        callback();
+                    });
+                });
+            } // delete
+
         } // classMethods
     }); // define
 
