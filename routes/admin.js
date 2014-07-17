@@ -24,13 +24,15 @@ exports.editor = function(req, res) {
             // find the post
             db.Post.find(req.params.id).success(function(post) {
                 res.render('admin/editor', {
-                    post: post
+                    post: post,
+                    newPost: false
                 });
             });
         } else { // We are creating a new post
             var thePost = {title: "", body: ""}
             res.render('admin/editor', {
-                post: thePost
+                post: thePost,
+                newPost: true
             });
         }
     } else {  // not logged in
@@ -66,4 +68,18 @@ exports.deletePost = function(req, res) {
             res.json({post: req.params.id});
         }
     });
+}
+
+exports.update = function(req, res) {
+    if (res.locals.user) {
+        var data = req.body.post;
+        db.Post.find(req.params.id).success(function(post) {
+            post.updateAttributes(
+                data
+            );
+            res.redirect('/admin/posts');
+        });
+    } else {  // not logged in
+        res.redirect('/admin');
+    }
 }

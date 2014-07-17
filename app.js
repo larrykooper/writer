@@ -42,6 +42,7 @@ app.post('/login', loginRoutes.submit);
 app.get('/logout', loginRoutes.logout);
 app.post('/admin/register', register.submit);
 app.post('/admin/post', adminRoutes.create);
+app.post('/admin/post/:id', adminRoutes.update)
 app.delete('/admin/posts/:id', adminRoutes.deletePost);
 app.get('/admin/editor/:id', adminRoutes.editor);
 
