@@ -54,7 +54,7 @@ exports.create = function(req, res) {
             next(new Error(err))
         } else {
             // we are good
-            res.redirect('/admin');
+            res.redirect('/admin/posts');
         }
     });
 }
