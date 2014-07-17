@@ -8,7 +8,7 @@ module.exports = {
             .type('#email', 'mary')
             .type('#password', 'secret')
             .submit()
-            .assert.text('#welcome', 'Welcome to the blog posts admin!', 'I am on the post page')
+            .assert.text('#welcome', 'Blog posts admin', 'I am on the post page')
             .done();
     },
 
