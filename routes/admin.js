@@ -1,9 +1,13 @@
 var db = require('../models');
 
 exports.index = function(req, res){
-    res.render('admin/index', {
-      title: 'Writer Admin'
-    })
+    if (res.locals.user) {
+        res.redirect('/admin/posts');
+    } else {
+        res.render('admin/index', {
+            title: 'Writer Admin'
+        });
+    }
 }
 
 exports.posts = function(req, res) {
