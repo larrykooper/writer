@@ -30,7 +30,7 @@ input {
     color: #7f9acc;
 }
 
-a:link {
+a:link, a:visited {
     color: #7f9acc;
     text-decoration: none;
 }
