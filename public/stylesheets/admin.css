@@ -30,6 +30,11 @@ input {
     color: #7f9acc;
 }
 
+a:link {
+    color: #7f9acc;
+    text-decoration: none;
+}
+
 /*  editor page */
 
 .title {

@@ -34,7 +34,7 @@ $(document).ready(function() {
         }
     })
 
-    $("a[kind='delete']").hover(
+    $(".user-actions a").hover(
         function() {
             $(this).css("text-decoration", "underline");
         }, function() {
