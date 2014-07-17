@@ -7,6 +7,7 @@ var session = require('express-session');
 var userMiddleware = require('./lib/middleware/user');
 var messages = require('./lib/messages');
 var moment = require('moment');
+var favicon = require('serve-favicon');
 
 // Now we require the route logic
 var slashRoute = require('./routes/index');
@@ -22,6 +23,7 @@ app.set('view engine', 'ejs');
 app.set('models', require('./models'));
 
 app.use(morgan('dev'));
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
@@ -41,6 +43,7 @@ app.get('/logout', loginRoutes.logout);
 app.post('/admin/register', register.submit);
 app.post('/admin/post', adminRoutes.create);
 app.delete('/admin/posts/:id', adminRoutes.deletePost);
+app.get('/admin/editor/:id', adminRoutes.editor);
 
 // Routes with only a controller
 

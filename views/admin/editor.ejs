@@ -7,11 +7,11 @@
 <% include topnav %>
 <form action='/admin/post' method='post'>
     <span class="title">
-        <input id="titleBox" type='text' name='post[title]' size="60" placeholder="Post title" />
+        <input id="titleBox" type='text' name='post[title]' size="60" placeholder="Post title" value='<%= post.title %>' />
     </span>
     <input id="publish" type='submit' value='Publish' />
     <div class="postBody">
-        <textarea id="postingBox" name='post[body]'></textarea>
+        <textarea id="postingBox" name='post[body]'><%= post.body %></textarea>
     </div>
 </form>
 </body>

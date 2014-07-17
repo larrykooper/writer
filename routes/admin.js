@@ -20,8 +20,20 @@ exports.posts = function(req, res) {
 
 exports.editor = function(req, res) {
     if (res.locals.user) {
-        res.render('admin/editor');
-    } else {
+        if (req.params.id) {  // if there is a post number
+            // find the post
+            db.Post.find(req.params.id).success(function(post) {
+                res.render('admin/editor', {
+                    post: post
+                });
+            });
+        } else { // We are creating a new post
+            var thePost = {title: "", body: ""}
+            res.render('admin/editor', {
+                post: thePost
+            });
+        }
+    } else {  // not logged in
         res.redirect('/admin');
     }
 }
