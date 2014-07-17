@@ -19,7 +19,8 @@
     "moment": "^2.7.0",
     "morgan": "~1.0.0",
     "pg": "^3.2.0",
-    "sequelize": "^1.7.5"
+    "sequelize": "^1.7.5",
+    "serve-favicon" : "*"
   },
   "devDependencies": {
     "chai": "*",
