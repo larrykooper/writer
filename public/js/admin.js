@@ -1,15 +1,20 @@
 var myNamespace = (function () {
 
-    var doDeleteCall;
+    var doDeleteCall, deletePostFromAdmin;
 
     doDeleteCall = function(postNumber) {
         $.ajax({
             type: "DELETE",
             url: "/admin/posts/" + postNumber
         })
-        .done(function(msg) {
-            location.reload();
+        .done(function(data, textStatus, jqXHR) {
+            deletePostFromAdmin(data);
         });
+    };
+
+    deletePostFromAdmin = function(postObject) {
+        postId = postObject.post;
+        $("#"+postId).remove();
     };
 
 $(document).ready(function() {

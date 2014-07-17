@@ -49,6 +49,9 @@ exports.deletePost = function(req, res) {
     db.Post.deleteOne(req.params.id, function(err) {
         if (err) {
             next(new Error(err))
+        } else {
+            // Return JSON that gives post we just deleted
+            res.json({post: req.params.id});
         }
     });
 }
