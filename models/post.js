@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
                 });
 
                 post.save(callback)
-                    .success(function(){
+                    .then(function(){
                         callback();
                     }).error(function(error){
                         callback('ERROR 607: ' + error);
@@ -25,8 +25,8 @@ module.exports = function(sequelize, DataTypes) {
                 Post.destroy();
             },
             deleteOne: function(postID, callback) {
-                Post.find(postID).success(function(post){
-                    post.destroy().success(function(){
+                Post.find(postID).then(function(post){
+                    post.destroy().then(function(){
                         callback();
                     });
                 });

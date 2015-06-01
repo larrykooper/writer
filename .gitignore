@@ -2,3 +2,4 @@ nohup.out
 .DS_Store
 npm-debug.log
 dalektests/screenshots
+node_modules

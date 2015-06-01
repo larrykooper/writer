@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
                     if (err) return callback(err);
                     // save the user record
                     user.save(callback)
-                        .success(function(){
+                        .then(function(){
                             callback(null, user);
                         }).error(function(error){
                             callback('ERROR 613: Creating a user: ' + error);

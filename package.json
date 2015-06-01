@@ -1,6 +1,6 @@
 {
   "name": "writer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "node": "0.10.28"
   },
@@ -10,22 +10,23 @@
   },
   "dependencies": {
     "bcrypt": "*",
-    "body-parser": "~1.0.0",
-    "cookie-parser": "~1.0.1",
-    "debug": "~0.7.4",
-    "ejs": "~0.8.5",
-    "express": "~4.0.0",
+    "body-parser": "~1.12.4",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "ejs": "~2.3.1",
+    "express": "~4.12.4",
     "express-session": "*",
-    "moment": "^2.7.0",
-    "morgan": "~1.0.0",
-    "pg": "^3.2.0",
-    "sequelize": "^1.7.5",
-    "serve-favicon" : "*"
+    "moment": "^2.10.3",
+    "morgan": "~1.5.3",
+    "pg": "^4.3.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.1.1",
+    "serve-favicon": "*"
   },
   "devDependencies": {
     "chai": "*",
-    "cucumber": "^0.4.0",
-    "dalekjs": "0.0.8",
-    "zombie": "^2.0.0-alpha31"
+    "cucumber": "^0.4.9",
+    "dalekjs": "0.0.9",
+    "zombie": "^4.0.10"
   }
 }
